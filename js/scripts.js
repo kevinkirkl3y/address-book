@@ -13,24 +13,28 @@ AddressBook.prototype.assignId = function() {
 }
 AddressBook.prototype.findContact = function(id) {
   for (let i=0; i< this.contacts.length; i++) {
-    if (this.contacts[i].id == id) {
-      return this.contacts[i];
+    if (this.contacts[i]) {
+      if (this.contacts[i].id == id) {
+        return this.contacts[i];
+      }
     }
   };
   return false;
 }
 AddressBook.prototype.deleteContact = function(id) {
   for (let i=0; i<this.contacts.length; i++) {
-    if ( this.contacts[i].id == id) {
-      delete this.contacts[i];
-      return true;
+    if (this.contacts[i]) {
+      if ( this.contacts[i].id == id) {
+        delete this.contacts[i];
+        return true;
+      }
     }
   };
   return false;
 }
 //Business Logic For Contacts --------
 function Contact(firstName, lastName, phoneNumber){
-  this.firstname = firstName;
+  this.firstName = firstName;
   this.lastName = lastName;
   this.phoneNumber = phoneNumber;
 }
@@ -38,3 +42,14 @@ function Contact(firstName, lastName, phoneNumber){
 Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 }
+
+
+//UI Logic
+
+let addressBook = new AddressBook();
+
+$(document).ready(function(){
+  $("form#new-contact").submit(function(event) {
+
+  });
+});
