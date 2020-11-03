@@ -70,8 +70,12 @@ function showContact(contactId) {
 
 function attachContactListeners() {
   $("ul#contacts").on("click", "li", function(){
-    console.log("The id of this <li> is" + this.id + ".");
     showContact(this.id);
+  });
+  $("#buttons").on("click", ".deleteButton", function(){
+    addressBook.deleteContact(this.id);
+    $("#show-contact").hide();
+    displayContactDetails(addressBook);
   });
 };
 
